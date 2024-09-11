@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+body{
+ background-color:rgb(75, 172, 140) ;
+ padding-top: 3%;
+}
+#un{
+    height: 30px;
+    border:2px solid black;
+}
+#pw{
+    height: 30px;
+    border:2px solid black;
+}
+#cpw{
+    height: 30px;
+    border:2px solid black;
+}
+#mail{
+    height: 30px;
+    border:2px solid black;
+}
+#tel{
+    height: 30px;
+    border:2px solid black;
+}
+#submit{
+    font-weight: bold;
+      border:2px solid black;
+      padding-left:30px;
+      padding-right:30px;
+      padding-top:10px;
+      padding-bottom:10px;
+      transition-duration: 0.4s;
+}
+#submit:hover{
+    background-color: black;
+    color: aliceblue;
+}
+</style>
+</head>
+<body>
+  <center>
+<form style="border: 3px solid black; border-radius:10px; width: 450px;" id="formdetails">
+
+<center><br><br><div style="background-color: black;color: aliceblue;"><hr style="border:2px solid black;">
+<h1>Registration Page</h1><hr style="border:2px solid black;"></div>
+<br>
+
+<label for="un">username:</label><br>
+<input type="text"id="un" required>
+
+<br
+
+<label for="pw">password:</label><br>
+<input type="password"id="pw" required>
+
+<br>
+
+<label for="cpw">confirm password:</label><br>
+<input type="password"id="cpw" required>
+
+<br>
+
+<label for="mail">email:</label><br>
+<input type="email" id="mail" required>
+
+<br>
+
+<label for="tel">phone number:</label><br>
+<input type="tel"id="tel" required>
+
+<br><br>
+
+<input type="submit" value="register" id="submit">
+</center><br>
+
+<center><p>already have an account <a href="./login.html">Login</a> ?</p></center>
+<center><p>Login as a <a href="./fake.html">Guest</a> ?</p></center>
+
+</form>
+</center>
+
+<script>
+     document.getElementById("formdetails").addEventListener("submit", function(event){
+
+        event.preventDefault();
+
+        let username = document.getElementById("un").value;
+        let password = document.getElementById("pw").value;
+        let confirmPassword = document.getElementById("cpw").value;
+        let email = document.getElementById("mail").value;
+        let number = document.getElementById("tel").value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        
+        if (!Array.isArray(users)) {
+              users = []; 
+        }
+        
+        let userfound = users.find(user => user.username === username);
+        let emailfound = users.find(user => user.email === email );
+        let numberfound = users.find(user => user.number === number );
+
+          if(userfound){
+            alert("Username already exists. Please try again.");
+          }
+          else  if(emailfound){
+            alert("User email already exists. Please try again.");
+          }
+          else  if(numberfound){
+            alert("User number email already exists. Please try again.");
+          }
+          else{
+            let user = {
+            username: username,
+            password: password,
+            email: email,
+            number: number
+            };
+            users.push(user);
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+        window.location.href = './task1.html';
+
+        }
+     });
+</script>
+</body>
+</html>

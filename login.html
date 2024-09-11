@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+<style>
+body{
+ background-color:rgb(75, 172, 140) ;
+ padding-left: 30%;
+ padding-right: 30%;
+ padding-top: 6%;
+}
+#submit{
+     border:2px solid black;
+     padding-left:30px;
+     padding-right:30px;
+     padding-top:8px;
+     padding-bottom:8px;
+     margin-bottom: 20%;
+     transition-duration: 0.4s;
+}
+#submit:hover{
+     background-color: black;
+     color: aliceblue;
+}
+#un{
+     height: 30px;
+     border:2px solid black;
+}
+#pw{
+     height: 30px;
+     border:2px solid black;
+}
+#br{
+     line-height:10px;
+}
+h1{
+    color: aliceblue;
+}
+#forms{
+    width: 100%;
+    border:5px solid black;
+    border-radius: 8px;
+}
+#div1{
+    margin-top: 20%;
+    background-color: black;
+}
+</style>
+</head>
+<body>
+
+<form id="forms">
+
+<center>
+<div id="div1">
+<h1>Log In Page</h1>
+</div>
+
+<br><br><br>
+
+<label for="un" style="font-size:25px;">username:</label>
+<input type="text"id="un" required>
+
+<br><br id="br">
+
+<label for="pw" style="font-size:25px;">password:</label>
+<input type="password"id="pw" required>
+
+<br><br>
+
+<input type="submit" id="submit">
+</center>
+
+</form>
+
+<script>
+     document.getElementById("forms").addEventListener("submit" ,  function(event) {
+          event.preventDefault();
+
+          let logusername = document.getElementById("un").value;
+          let logpassword = document.getElementById("pw").value;
+
+          let users = JSON.parse(localStorage.getItem("users")) || [] ;
+
+          let found = users.find(user => user.username === logusername && user.password === logpassword);
+
+          if(found){
+               window.location.href = './fake.html';
+          }
+          else{
+               alert("Invalid username or password. Please try again.");
+          }
+     });
+</script>
+
+</body>
+</html>

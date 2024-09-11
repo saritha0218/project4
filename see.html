@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 300px;
+            margin-left: 20%;
+            margin-top: 10%;
+            mix-blend-mode: multiply;
+        }
+        body{
+            background-color:  rgb(204, 240, 228) ;
+        }
+        div p{
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+    var a= JSON.parse(window.localStorage.getItem("item"));
+
+    var div1 = document.createElement("div");
+    div1.style.display = "flex";
+    div1.style.justifyContent = "center";
+    div1.style.alignItems = "center";
+ 
+    var div2 = document.createElement("div");
+
+     var x = document.createElement("img");
+     x.setAttribute ("src", a.image);
+     console.log(x);
+     div1.appendChild(x)
+
+
+    var y = document.createElement("p");
+     y.textContent = a.title;
+     console.log(y);
+
+     var br1 = document.createElement("br");
+
+     var price = document.createElement("p");
+     price.textContent = a.price + "/-";
+     console.log(price);
+     
+     var br2 = document.createElement("br");
+
+     var des = document.createElement("p");
+     des.textContent = a.description;
+     console.log(des);
+
+     var br3 = document.createElement("br");
+
+     var cat = document.createElement("p");
+     cat.textContent = a.category;
+     console.log(cat);
+
+     var div3 = document.createElement("div")
+     div3.style.display="flex"; 
+     div3.style.gap = "50px";
+     div3.style.marginTop="50px";
+
+     var add = document.createElement("button");
+     add.textContent =" Add to Cart";
+     add.style.width="150px";
+     add.style.backgroundColor="rgb(244, 67, 67)";
+     add.style.color="white";
+     add.style.fontWeight="bold";
+     add.style.borderRadius="8px";
+     add.addEventListener("click", ()=>{
+       window.location.href="./add.html";
+     })
+
+     var buy = document.createElement("button");
+     buy.textContent = "Buy Now";
+     buy.style.width="150px";
+     buy.style.height="50px";
+     buy.style.backgroundColor="black";
+     buy.style.color="white";
+     buy.style.fontWeight="bold";
+     buy.style.borderRadius="8px";
+     buy.addEventListener("click", ()=>{
+        window.location.href="./buy.html";
+     })
+     
+     div3.append(add, buy)
+     div2.append(y,br1,price,br2,des,br3,cat,div3)
+     div2.style.margin="40px 100px"
+
+    var div = document.createElement("div");
+    div.append(div1,div2)
+    div.style.display="flex";
+
+     
+     document.body.append(div);
+    </script>
+</body>
+</html>

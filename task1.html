@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #clear{
+            float: right;
+            margin-right: 20px;
+            margin-top: -47px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button id="clear">Clear Data</button>
+    <div id = "userinfo">     </div>
+
+    <script>
+        let users = JSON.parse(localStorage.getItem("users"));
+
+        let get = document.getElementById("userinfo");
+
+        users.forEach((user, index) => {
+        let userdiv = document.createElement("div")
+        userdiv.style.border = "2px solid black";
+        userdiv.style.margin="50px";
+        userdiv.style.padding="25px";
+
+
+        let username = document.createElement("p")
+        username.innerHTML = `<strong>Username:</strong> ${user.username}`;
+        userdiv.appendChild(username);
+
+        let password = document.createElement("p")
+        password.innerHTML =`<strong>password:</strong> ${user.password}`;
+        userdiv.appendChild(password);
+
+        let email = document.createElement("p")
+        email.innerHTML =`<strong>email:</strong> ${user.email}`;
+        userdiv.appendChild(email);
+
+        let number = document.createElement("p")
+        number.innerHTML =`<strong>Number:</strong> ${user.number}`;
+        userdiv.appendChild(number);
+
+        let image = document.createElement("img")
+        image.setAttribute("src", "./delete.png");
+        image.style.width="50px";
+        image.style.height="50px";
+        image.addEventListener("click", ()=> {
+        
+            users.splice(index, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+            userdiv.remove();
+        })
+        userdiv.appendChild(image);
+
+        get.appendChild(userdiv)
+    });
+
+    document.getElementById("clear").addEventListener("click", function(){
+        localStorage.removeItem("users");
+        get.innerHTML="";
+    });
+    </script>
+    
+</body>
+</html>
