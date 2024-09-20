@@ -7,18 +7,13 @@
 <style>
 body{
  background-color:rgb(75, 172, 140) ;
- padding-left: 30%;
- padding-right: 30%;
  padding-top: 6%;
 }
 #submit{
      border:2px solid black;
-     padding-left:30px;
-     padding-right:30px;
-     padding-top:8px;
-     padding-bottom:8px;
-     margin-bottom: 20%;
-     transition-duration: 0.4s;
+     padding: 10px 30px;
+     margin-bottom: 10%;
+     transition-duration: 1s;
 }
 #submit:hover{
      background-color: black;
@@ -32,38 +27,36 @@ body{
      height: 30px;
      border:2px solid black;
 }
-#br{
-     line-height:10px;
-}
 h1{
     color: aliceblue;
 }
 #forms{
-    width: 100%;
+    width: 35%;
     border:5px solid black;
     border-radius: 8px;
 }
 #div1{
     margin-top: 20%;
+    padding: 2%;
     background-color: black;
 }
 </style>
 </head>
 <body>
-
+<center>
 <form id="forms">
 
-<center>
+
 <div id="div1">
 <h1>Log In Page</h1>
 </div>
 
-<br><br><br>
+<br><br>
 
 <label for="un" style="font-size:25px;">username:</label>
 <input type="text"id="un" required>
 
-<br><br id="br">
+<br><br>
 
 <label for="pw" style="font-size:25px;">password:</label>
 <input type="password"id="pw" required>
@@ -71,11 +64,13 @@ h1{
 <br><br>
 
 <input type="submit" id="submit">
-</center>
+
+<p>Not a member <a href="./index.html">Register</a> ?</p>
 
 </form>
+</center>
 
-<script>
+<script>  
      document.getElementById("forms").addEventListener("submit" ,  function(event) {
           event.preventDefault();
 

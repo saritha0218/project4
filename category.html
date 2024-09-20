@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+    <style>
+        body{
+            height: 100%;
+            background-image: url(./cbg.avif);
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        var a= JSON.parse(window.localStorage.getItem("items"));
+
+        function buttonHandler (currentObject){
+            window.localStorage.setItem("item", JSON.stringify(currentObject));
+        }
+
+        for(let i of a){
+          let divs = document.createElement("div")
+          divs.style.width="375px";
+          divs.style.height="500px";
+          divs.style.margin="55px 40px";
+          divs.style.padding="15px";
+          divs.style.overflow="scroll";
+          divs.style.scrollbarWidth="none"
+          divs.style.border="4px solid";
+          divs.style.borderColor="black";
+          divs.style.backgroundColor="white"
+          divs.style.borderRadius="20px"
+          divs.style.display = 'flex';
+          divs.style.flexDirection="column";
+          divs.style.alignItems = 'center'; 
+          
+          
+          var img = document.createElement("img");
+          img.width= "200";
+          img.style.a="center";
+          img.style.mixBlendMode="multiply";
+          img.setAttribute("src", i["image"]);
+          divs.appendChild(img);
+
+          var br = document.createElement("br");
+          divs.appendChild(br);
+
+          var title = document.createElement("h4");
+          title.innerHTML=i["title"];
+          divs.appendChild(title);
+
+          var amount = document.createElement("p");
+          amount.innerHTML=i["price"] + "/-";
+          divs.appendChild(amount);
+
+          var description = document.createElement("p");
+          description.innerHTML=i["description"];
+          divs.appendChild(description);
+
+          var rating = document.createElement("div");
+          rating.style.display = "flex";
+          rating.style.gap="130px";
+
+          var rate = document.createElement("p");
+          rate.innerHTML=i["rating"]["rate"];
+          rating.appendChild(rate);
+
+          var count = document.createElement("p");
+          count.innerHTML=i["rating"]["count"];
+          rating.appendChild(count);
+
+          divs.appendChild(rating);
+
+          var category = document.createElement("p");
+          category.innerHTML=i["category"];
+          divs.appendChild(category);
+
+
+          // var see_more = document.createElement("button");
+          // see_more.innerHTML="See More";
+          // see_more.style.fontSize="20px";
+          // see_more.style.borderRadius="8px";
+          // see_more.style.color = "white";
+          // see_more.style.backgroundColor = "#007BFF"; 
+          // see_more.style.cursor = "pointer";
+          // see_more.style.transition = "background-color 0.3s ease";
+          // see_more.addEventListener("click",()=> buttonHandler(i))
+
+          var anchor = document.createElement("a");
+          anchor.href="./see.html";
+          anchor.addEventListener("click",()=> buttonHandler(i))
+          anchor.style.textDecoration= "none";
+          anchor.style.color = "black";
+          anchor.style.fontWeight = "bold";
+          anchor.append(divs);
+
+          document.body.appendChild(anchor)
+      } 
+
+      document.body.style.display="flex";
+      document.body.style.flexWrap="wrap";
+    </script>
+</body>
+</html>

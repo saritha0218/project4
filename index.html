@@ -45,6 +45,7 @@ body{
 </style>
 </head>
 <body>
+  <div class="backdrop">
   <center>
 <form style="border: 3px solid black; border-radius:10px; width: 450px;" id="formdetails">
 
@@ -75,7 +76,7 @@ body{
 <label for="tel">phone number:</label><br>
 <input type="tel"id="tel" required>
 
-<br><br>
+<br><br> 
 
 <input type="submit" value="register" id="submit">
 </center><br>
@@ -86,7 +87,10 @@ body{
 </form>
 </center>
 
+</div>
+
 <script>
+
      document.getElementById("formdetails").addEventListener("submit", function(event){
 
         event.preventDefault();
