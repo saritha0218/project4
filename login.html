@@ -6,39 +6,51 @@
      <title>Document</title>
 <style>
 body{
- background-color:rgb(75, 172, 140) ;
+ height: 100%;
+ background-image:url(https://www.tendencias.kpmg.es/wp-content/uploads/2018/11/GettyImages-912949110.jpg);
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center;
+ background-attachment: fixed;
  padding-top: 6%;
 }
 #submit{
      border:2px solid black;
+     background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
+     border-radius: 8px;
      padding: 10px 30px;
-     margin-bottom: 10%;
-     transition-duration: 1s;
+     margin-bottom: 8%;
+     font-weight: bold;
+     transition-duration: 0.2s;
 }
 #submit:hover{
      background-color: black;
-     color: aliceblue;
+     font-size: 15px;
 }
-#un{
-     height: 30px;
+#un, #pw{
+     width: 200px;
+     height: 35px;
      border:2px solid black;
+     border-radius: 8px;
 }
-#pw{
-     height: 30px;
-     border:2px solid black;
+input::placeholder{
+     font-weight: bold;
+     padding-left: 15px;
 }
 h1{
     color: aliceblue;
 }
 #forms{
-    width: 35%;
-    border:5px solid black;
-    border-radius: 8px;
+     margin-left: -650px;
+    width: 350px;
+    border:3px solid black;
+    border-radius: 40px;
+    background-image: linear-gradient(315deg, #67f8e2 0%, #fba7e6 74%);
 }
 #div1{
     margin-top: 20%;
     padding: 2%;
-    background-color: black;
+    background:#cda0f3;
 }
 </style>
 </head>
@@ -48,24 +60,22 @@ h1{
 
 
 <div id="div1">
-<h1>Log In Page</h1>
+<h1>Sign In</h1>
 </div>
 
 <br><br>
 
-<label for="un" style="font-size:25px;">username:</label>
-<input type="text"id="un" required>
+<input type="text"id="un" placeholder="username" required>
 
 <br><br>
 
-<label for="pw" style="font-size:25px;">password:</label>
-<input type="password"id="pw" required>
+<input type="password"id="pw" placeholder="password" required>
 
 <br><br>
 
 <input type="submit" id="submit">
 
-<p>Not a member <a href="./index.html">Register</a> ?</p>
+<p>Not a member <a href="./index.html">Register</a> ?</p><br><br>
 
 </form>
 </center>

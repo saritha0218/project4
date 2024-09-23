@@ -22,43 +22,77 @@
 </head>
 <body>
     <script>
+         var a= JSON.parse(window.localStorage.getItem("item"));
 
-    var a= JSON.parse(window.localStorage.getItem("item"));
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+        
+        if (!Array.isArray(products)) {
+              products = []; 
+        }
+
+    let buys = JSON.parse(localStorage.getItem("buys")) || [];
+        
+        if (!Array.isArray(buys)) {
+              buys = []; 
+        }
 
     var div1 = document.createElement("div");
     div1.style.display = "flex";
     div1.style.justifyContent = "center";
     div1.style.alignItems = "center";
- 
-    var div2 = document.createElement("div");
 
      var x = document.createElement("img");
      x.setAttribute ("src", a.image);
-     console.log(x);
      div1.appendChild(x)
 
+    var images = document.createElement("div");
+    images.style.paddingRight="70px";
+
+    var img1 = document.createElement("img");
+    img1.style.width="150px";
+    img1.style.height="150px";
+    let src1 = img1.setAttribute("src",a.img1)
+    img1.addEventListener("click", ()=>{
+        x.setAttribute("src", a.img1)
+    } );
+
+    var img2 = document.createElement("img");
+    img2.style.width="150px";
+    img2.style.height="150px";
+    let src2 = img2.setAttribute("src", a.img2)
+    img2.addEventListener("click", ()=>{
+        x.setAttribute("src", a.img2)
+    } );
+    
+    var img3 = document.createElement("img");
+    img3.style.width="150px";
+    img3.style.height="150px";
+    let src3 = img3.setAttribute("src",a.img3)
+    img3.addEventListener("click", ()=>{
+        x.setAttribute("src", a.img3)
+    } );
+    
+    images.append(img1,img2,img3)
+
+    var div2 = document.createElement("div");
 
     var y = document.createElement("p");
      y.textContent = a.title;
-     console.log(y);
 
      var br1 = document.createElement("br");
 
      var price = document.createElement("p");
      price.textContent = a.price + "/-";
-     console.log(price);
      
      var br2 = document.createElement("br");
 
      var des = document.createElement("p");
      des.textContent = a.description;
-     console.log(des);
 
      var br3 = document.createElement("br");
 
      var cat = document.createElement("p");
      cat.textContent = a.category;
-     console.log(cat);
 
      var div3 = document.createElement("div")
      div3.style.display="flex"; 
@@ -73,6 +107,9 @@
      add.style.fontWeight="bold";
      add.style.borderRadius="8px";
      add.addEventListener("click", ()=>{
+       add.textContent =" Added";
+       products.push(a);
+       localStorage.setItem("products", JSON.stringify(products));
        window.location.href="./add.html";
      })
 
@@ -85,6 +122,8 @@
      buy.style.fontWeight="bold";
      buy.style.borderRadius="8px";
      buy.addEventListener("click", ()=>{
+        buys.push(a);
+       localStorage.setItem("buys", JSON.stringify(buys));
         window.location.href="./buy.html";
      })
      
@@ -93,7 +132,7 @@
      div2.style.margin="40px 100px"
 
     var div = document.createElement("div");
-    div.append(div1,div2)
+    div.append(images,div1,div2)
     div.style.display="flex";
 
      

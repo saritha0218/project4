@@ -6,83 +6,81 @@
     <title>Document</title>
 <style>
 body{
- background-color:rgb(75, 172, 140) ;
+  height: 100%;
+ background-image: url(https://segwitz.com/wp-content/uploads/2021/09/why-ecommerce-need-mobile-apps.jpg);
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center;
+ background-attachment: fixed;
  padding-top: 3%;
 }
-#un{
+#un, #pw, #cpw, #mail, #tel{
     height: 30px;
     border:2px solid black;
-}
-#pw{
-    height: 30px;
-    border:2px solid black;
-}
-#cpw{
-    height: 30px;
-    border:2px solid black;
-}
-#mail{
-    height: 30px;
-    border:2px solid black;
-}
-#tel{
-    height: 30px;
-    border:2px solid black;
+    border-radius: 8px;
+    width: 200px;
+    height: 35px;
 }
 #submit{
     font-weight: bold;
+    background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
       border:2px solid black;
+      border-radius: 8px;
       padding-left:30px;
       padding-right:30px;
       padding-top:10px;
       padding-bottom:10px;
-      transition-duration: 0.4s;
+      transition-duration: 0.2s;
 }
 #submit:hover{
     background-color: black;
-    color: aliceblue;
+    font-size: 15px;
+}
+#formdetails {
+  background: radial-gradient(circle, rgba(247,150,192,1) 0%, rgba(118,174,241,1) 100%);
+  border-radius:10px;
+  width: 450px;
+  margin-left: -700px;
+}
+input::placeholder{
+  font-weight: bold;
+}
+h1, .white{
+  color: white;
 }
 </style>
 </head>
 <body>
   <div class="backdrop">
   <center>
-<form style="border: 3px solid black; border-radius:10px; width: 450px;" id="formdetails">
+<form id="formdetails">
 
-<center><br><br><div style="background-color: black;color: aliceblue;"><hr style="border:2px solid black;">
-<h1>Registration Page</h1><hr style="border:2px solid black;"></div>
+<center><br><br><div style="background-color: rgb(245, 184, 245);padding: 1px;">
+<h1>Sign Up</h1></div>
 <br>
 
-<label for="un">username:</label><br>
-<input type="text"id="un" required>
+<input type="text"id="un" placeholder="Username" required>
 
-<br
+<br><br>
 
-<label for="pw">password:</label><br>
-<input type="password"id="pw" required>
+<input type="password"id="pw" placeholder="Password" required>
 
-<br>
+<br><br>
+<input type="password"id="cpw" placeholder="ConfirmPassword" required>
 
-<label for="cpw">confirm password:</label><br>
-<input type="password"id="cpw" required>
+<br><br>
+<input type="email" id="mail" placeholder="Mail" required>
 
-<br>
-
-<label for="mail">email:</label><br>
-<input type="email" id="mail" required>
-
-<br>
-
-<label for="tel">phone number:</label><br>
-<input type="tel"id="tel" required>
+<br><br>
+<input type="tel"id="tel" placeholder="PhoneNumber" required>
 
 <br><br> 
 
 <input type="submit" value="register" id="submit">
 </center><br>
 
-<center><p>already have an account <a href="./login.html">Login</a> ?</p></center>
-<center><p>Login as a <a href="./fake.html">Guest</a> ?</p></center>
+<center><p class="white">already have an account <a href="./login.html">Login</a> ?</p></center>
+<center><p class="white">Login as a <a href="./fake.html">Guest</a> ?</p></center><br>
 
 </form>
 </center>
@@ -136,7 +134,7 @@ body{
 
         localStorage.setItem("users", JSON.stringify(users));
 
-        window.location.href = './task1.html';
+        window.location.href = './login.html';
 
         }
      });
