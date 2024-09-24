@@ -7,8 +7,17 @@
     <style>
         body{
             height: 100%;
-            background-image: url(./cbg.avif);
+            background: linear-gradient(180deg, rgb(150, 215, 236), rgb(228, 160, 160));
         }
+
+        .div-hover {
+    transition: transform 0.3s ease;
+    background-color: white;
+}
+
+.div-hover:hover {
+    transform: translateY(-100px);
+}
     </style>
 </head>
 <body>
@@ -22,60 +31,65 @@
 
         for(let i of a){
           let divs = document.createElement("div")
-          divs.style.width="375px";
-          divs.style.height="500px";
-          divs.style.margin="55px 40px";
+          divs.style.width="298px";
+          divs.style.height="400px";
+          divs.style.margin="15px 22px";
           divs.style.padding="15px";
           divs.style.overflow="scroll";
           divs.style.scrollbarWidth="none"
-          divs.style.border="4px solid";
-          divs.style.borderColor="black";
-          divs.style.backgroundColor="white"
+          divs.style.border="2px solid black";
           divs.style.borderRadius="20px"
           divs.style.display = 'flex';
           divs.style.flexDirection="column";
           divs.style.alignItems = 'center'; 
+          divs.style.backgroundColor="white";
           
-          
+          var div1 = document.createElement("div") 
+          div1.style.height="200px"         
           var img = document.createElement("img");
-          img.width= "200";
-          img.style.a="center";
+          img.style.width= "150px";
+          img.style.height="180px";
           img.style.mixBlendMode="multiply";
           img.setAttribute("src", i["image"]);
-          divs.appendChild(img);
+          div1.appendChild(img);
 
+          var div2 =  document.createElement("div")
+          div2.style.textAlign="center"
+          div2.style.position = "relative";
+          div2.style.height = "auto";
+          div2.classList.add('div-hover');
           var br = document.createElement("br");
-          divs.appendChild(br);
+          div2.appendChild(br);
 
           var title = document.createElement("h4");
           title.innerHTML=i["title"];
-          divs.appendChild(title);
+          div2.appendChild(title);
 
           var amount = document.createElement("p");
           amount.innerHTML=i["price"] + "/-";
-          divs.appendChild(amount);
+          div2.appendChild(amount);
 
           var description = document.createElement("p");
           description.innerHTML=i["description"];
-          divs.appendChild(description);
+          div2.appendChild(description);
 
           var rating = document.createElement("div");
-          rating.style.display = "flex";
-          rating.style.gap="130px";
 
           var rate = document.createElement("p");
-          rate.innerHTML=i["rating"]["rate"];
+          rate.innerHTML=`Rating: `+ i["rating"]["rate"];
           rating.appendChild(rate);
 
           var count = document.createElement("p");
-          count.innerHTML=i["rating"]["count"];
+          count.innerHTML=`Count: `+i["rating"]["count"];
           rating.appendChild(count);
 
-          divs.appendChild(rating);
+          div2.appendChild(rating);
 
           var category = document.createElement("p");
           category.innerHTML=i["category"];
-          divs.appendChild(category);
+          div2.appendChild(category);
+
+          divs.append(div1,div2)
 
           var anchor = document.createElement("a");
           anchor.href="./see.html";
@@ -85,7 +99,8 @@
           anchor.style.fontWeight = "bold";
           anchor.append(divs);
 
-          document.body.appendChild(anchor)
+          document.body.appendChild(anchor);
+          
       } 
 
       document.body.style.display="flex";
